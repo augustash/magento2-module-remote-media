@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Augustash\RemoteMedia\Api\ConfigInterface" type="Augustash\RemoteMedia\Model\Config"/>
+    <preference for="Augustash\RemoteMedia\Api\Service\RemoteMediaUrlRewriterInterface" type="Augustash\RemoteMedia\Service\RemoteMediaUrlRewriter"/>
+    <preference for="Augustash\RemoteMedia\Api\Service\SupportedPrefixesInterface" type="Augustash\RemoteMedia\Service\SupportedPrefixes"/>
+
+    <type name="Magento\Catalog\Model\Product\Media\Config">
+        <plugin name="augustash_remote_media_catalog_media_config" type="Augustash\RemoteMedia\Plugin\Catalog\ProductMediaConfigPlugin" sortOrder="10" disabled="false"/>
+    </type>
+
+    <type name="Magento\Catalog\Model\View\Asset\Image">
+        <plugin name="augustash_remote_media_catalog_asset_image" type="Augustash\RemoteMedia\Plugin\Catalog\ViewAssetImagePlugin" sortOrder="10" disabled="false"/>
+    </type>
+
+    <type name="Magento\Swatches\Helper\Media">
+        <plugin name="augustash_remote_media_swatch_media" type="Augustash\RemoteMedia\Plugin\Catalog\SwatchMediaPlugin" sortOrder="10" disabled="false"/>
+    </type>
+
+    <type name="Magento\Email\Model\Template\Filter">
+        <plugin name="augustash_remote_media_email_filter" type="Augustash\RemoteMedia\Plugin\Template\EmailFilterMediaDirectivePlugin" sortOrder="10" disabled="false"/>
+    </type>
+
+    <type name="Magento\Cms\Model\Template\Filter">
+        <plugin name="augustash_remote_media_cms_filter" type="Augustash\RemoteMedia\Plugin\Template\CmsFilterMediaDirectivePlugin" sortOrder="10" disabled="false"/>
+    </type>
+
+    <type name="Magento\Cms\Block\Block">
+        <plugin name="augustash_remote_media_cms_block_html" type="Augustash\RemoteMedia\Plugin\Cms\CmsHtmlRewritePlugin" sortOrder="10" disabled="false"/>
+    </type>
+
+    <type name="Magento\Cms\Block\Page">
+        <plugin name="augustash_remote_media_cms_page_html" type="Augustash\RemoteMedia\Plugin\Cms\CmsHtmlRewritePlugin" sortOrder="10" disabled="false"/>
+    </type>
+</config>

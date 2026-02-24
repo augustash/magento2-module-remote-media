@@ -1,0 +1,57 @@
+{
+    "name": "augustash/module-remote-media",
+    "description": "Module to support remote media in Magento 2.",
+    "type": "magento2-module",
+    "require": {
+        "php": ">=8.1",
+        "magento/framework": ">=103.0",
+        "magento/module-catalog": "@stable",
+        "magento/module-cms": "@stable",
+        "magento/module-email": "@stable",
+        "magento/module-store": "@stable",
+        "magento/module-swatches": "@stable"
+    },
+    "require-dev": {
+        "augustash/magento2-quality-suite": "^1.0"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://repo.magento.com/"
+        },
+        {
+            "type": "composer",
+            "url": "https://repo.packagist.com/augustash/magento/"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Augustash\\RemoteMedia\\": "src/"
+        },
+        "files": [
+            "src/registration.php"
+        ]
+    },
+    "config": {
+        "allow-plugins": {
+            "magento/composer-dependency-version-audit-plugin": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        },
+        "sort-packages": true
+    },
+    "scripts": {
+        "test:all": [
+            "@test:lint",
+            "@test:stan",
+            "@test:phpcs"
+        ],
+        "test:lint": "vendor/bin/parallel-lint src/",
+        "test:mess": "vendor/bin/phpmd src/ text phpmd.xml.dist",
+        "test:phpcs": "vendor/bin/phpcs --runtime-set testVersion 8.3- -s src/",
+        "test:stan": "vendor/bin/phpstan analyze -c phpstan.neon.dist --no-interaction --no-progress --memory-limit=-1 src/",
+        "test:static-analysis": [
+            "@test:lint",
+            "@test:stan"
+        ]
+    }
+}
