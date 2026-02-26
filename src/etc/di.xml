@@ -8,6 +8,10 @@
         <plugin name="augustash_remote_media_catalog_media_config" type="Augustash\RemoteMedia\Plugin\Catalog\ProductMediaConfigPlugin" sortOrder="10" disabled="false"/>
     </type>
 
+    <type name="Magento\Catalog\Model\Category\Image">
+        <plugin name="augustash_remote_media_catalog_category_image" type="Augustash\RemoteMedia\Plugin\Catalog\CategoryImagePlugin" sortOrder="10" disabled="false"/>
+    </type>
+
     <type name="Magento\Catalog\Model\View\Asset\Image">
         <plugin name="augustash_remote_media_catalog_asset_image" type="Augustash\RemoteMedia\Plugin\Catalog\ViewAssetImagePlugin" sortOrder="10" disabled="false"/>
     </type>
